@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Anant Laghane - DevOps Engineer | CI/CD | Docker | Kubernetes | Jenkins | AWS">
+<title>Anant Laghane - DevOps Engineer</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+  body{line-height:1.6;scroll-behavior:smooth;transition:background 0.4s,color 0.4s;}
+  body.light{background:#0a192f;color:#ccd6f6;}
+  body.dark{background:#121212;color:#f4f4f4;}
+  a{text-decoration:none;color:inherit;}
+
+  /* Navbar */
+  nav{position:fixed;top:0;left:0;width:100%;background:rgba(10,25,47,0.95);display:flex;justify-content:space-between;align-items:center;padding:10px 20px;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.3);}
+  nav .logo{font-size:1.5rem;font-weight:bold;color:#64ffda;}
+  nav ul{list-style:none;display:flex;gap:20px;}
+  nav ul li a{color:#ccd6f6;font-weight:500;}
+  nav ul li a:hover{color:#64ffda;}
+  .hamburger{display:none;flex-direction:column;cursor:pointer;}
+  .hamburger div{width:25px;height:3px;background:white;margin:4px 0;transition:0.3s;}
+  @media(max-width:768px){
+    nav ul{display:none;flex-direction:column;background:rgba(10,25,47,0.95);position:absolute;top:50px;right:0;width:200px;padding:10px;border-radius:6px;}
+    nav ul.active{display:flex;}
+    .hamburger{display:flex;}
+  }
+
+  /* Buttons */
+  .btn{padding:10px 20px;border-radius:6px;cursor:pointer;margin:5px;display:inline-block;transition:0.3s;}
+  .btn-primary{background:#64ffda;color:#0a192f;font-weight:bold;}
+  .btn-primary:hover{background:#fff;transform:scale(1.05);}
+  .btn-outline{border:2px solid #64ffda;color:#64ffda;}
+  .btn-outline:hover{background:#64ffda;color:#0a192f;transform:scale(1.05);}
+
+  /* Hero */
+  header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#0a192f,#112240);color:white;}
+  header h1{font-size:3rem;margin-bottom:10px;color:#64ffda;}
+  header h2{font-size:1.5rem;margin-bottom:20px;color:#ccd6f6;border-right:3px solid #64ffda;white-space:nowrap;overflow:hidden;}
+  header div a{margin:0 10px;}
+
+  /* Sections */
+  section{padding:60px 20px;max-width:1000px;margin:auto;opacity:0;transform:translateY(30px);transition:all 1s ease;}
+  section.visible{opacity:1;transform:translateY(0);}
+  section h2{text-align:center;font-size:2rem;margin-bottom:20px;color:#64ffda;}
+
+  /* Skills */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;}
+  .skill-card{background:#112240;color:#ccd6f6;padding:20px;border-radius:10px;text-align:center;transition:0.3s;}
+  .skill-card:hover{background:#64ffda;color:#0a192f;transform:translateY(-5px)scale(1.05);}
+
+  .skill-card img {
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+.skill-card img:hover {
+  transform: scale(1.2);
+}
+
+
+  /* Experience */
+  .timeline{border-left:3px solid #64ffda;padding-left:20px;}
+  .timeline-item{margin-bottom:20px;}
+  .timeline-item h3{color:#64ffda;}
+
+  /* Projects */
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+  .project-card{background:#112240;padding:20px;border-radius:10px;transition:0.3s;}
+  .project-card:hover{background:#233554;transform:scale(1.05);}
+
+  /* Certifications */
+  .certs{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
+  .cert-card{background:#233554;color:#64ffda;padding:15px 20px;border-radius:8px;transition:0.3s;}
+  .cert-card:hover{background:#64ffda;color:#0a192f;}
+
+  /* Education */
+  ul{list-style:none;}
+  ul li{margin-bottom:10px;color:#ccd6f6;}
+
+  /* Contact */
+  .contact-container{display:flex;flex-wrap:wrap;gap:40px;justify-content:center;align-items:flex-start;}
+  #contact-form{display:flex;flex-direction:column;gap:15px;width:300px;}
+  #contact-form input,#contact-form textarea{padding:10px;border-radius:6px;border:none;background:#233554;color:#ccd6f6;}
+  #contact-form button{align-self:flex-start;}
+  .contact-info{text-align:center;}
+  .social-icons{display:flex;gap:15px;justify-content:center;margin-bottom:15px;}
+  .social-icons a img{width:40px;height:40px;filter:brightness(0)invert(1);transition:transform 0.3s;}
+  .social-icons a:hover img{transform:scale(1.2);}
+
+  .qr-section{text-align:center;margin-top:50px;}
+  .qr-section img{width:150px;border-radius:8px;margin-bottom:15px;}
+  .qr-section h3{color:#64ffda;margin-bottom:10px;}
+
+  footer{text-align:center;padding:20px;background:#112240;color:#64ffda;margin-top:40px;}
+</style>
+</head>
+<body class="light">
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">Anant Laghane</div>
+  <ul class="nav-menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger"><div></div><div></div><div></div></div>
+</nav>
+
+<!-- Hero -->
+<header>
+  <h1>Anant Laghane</h1>
+  <h2 id="typing">DevOps Engineer</h2>
+  <div>
+    <a href="./Anant_Laghane_Resume.pdf" class="btn btn-primary">⬇ Download Resume</a>
+    <a href="https://github.com/anantlaghane" target="_blank" class="btn btn-outline">GitHub</a>
+    <a href="https://linkedin.com/in/anantlaghane" target="_blank" class="btn btn-outline">LinkedIn</a>
+  </div>
+</header>
+
+<!-- About -->
+<section id="about">
+  <h2>About Me</h2>
+  <p>Entry-level DevOps Engineer with hands-on exposure to CI/CD pipelines, Docker, Kubernetes, Git, and scripting (Python/Shell). Eager to learn and adopt best practices while contributing to collaborative engineering teams.</p>
+</section>
+
+
+<!-- Skills -->
+<section id="skills">
+  <h2>Core Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=jenkins" width="50" alt="Jenkins"><br>Jenkins
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=docker" width="50" alt="Docker"><br>Docker
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=kubernetes" width="50" alt="Kubernetes"><br>Kubernetes
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=terraform" width="50" alt="Terraform"><br>Terraform
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=ansible" width="50" alt="Ansible"><br>Ansible
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=python" width="50" alt="Python"><br>Python
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=bash" width="50" alt="Bash"><br>Shell Scripting
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=git" width="50" alt="Git"><br>Git/GitHub
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=grafana" width="50" alt="Grafana"><br>Grafana & Prometheus
+    </div>
+    <div class="skill-card">
+      <img src="https://skillicons.dev/icons?i=linux" width="50" alt="Linux"><br>Linux
+    </div>
+  </div>
+</section>
+
+
+<!-- Experience -->
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Freelance DevOps Engineer – Pune (Nov 2024 – Present)</h3>
+      <p>✔ Set up CI/CD pipelines with Jenkins & GitHub Actions<br>
+      ✔ Deployed apps on Docker & Kubernetes<br>
+      ✔ Configured logging & monitoring (Loki, Prometheus, Grafana)</p>
+    </div>
+    <div class="timeline-item">
+      <h3>DevOps Intern – Stezier Consulting, Pune (Jul – Oct 2024)</h3>
+      <p>✔ Automated deployments using Ansible & Terraform<br>
+      ✔ Dockerized apps & deployed to Kubernetes<br>
+      ✔ Assisted in CI/CD workflows & troubleshooting</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project-card">
+      <h3>Jenkins CI/CD Pipeline</h3>
+      <p>Automated Java application build, testing, security scanning, and deployment.</p>
+      <ul>
+        <li>✅ Maven Build & Unit Tests</li>
+        <li>✅ SonarQube Analysis</li>
+        <li>✅ Trivy Vulnerability Scan</li>
+        <li>✅ Tomcat Deployment</li>
+      </ul>
+      <p><b>Tools:</b> Jenkins, Docker, Kubernetes, SonarQube, Trivy</p>
+    </div>
+    <div class="project-card">
+      <h3>Monitoring Stack</h3>
+      <p>Centralized logging & dashboards using Loki + Grafana.</p>
+    </div>
+    <div class="project-card">
+      <h3>Multi-tier App Deployment</h3>
+      <p>Sample 3-tier app deployed using Docker, Terraform & Kubernetes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+  <h2>Certifications</h2>
+  <div class="certs">
+    <div class="cert-card">Docker & Kubernetes – Udemy</div>
+    <div class="cert-card">DevOps Essentials – Linux Academy</div>
+    <div class="cert-card">GitOps with ArgoCD – KodeKloud</div>
+    <div class="cert-card">AWS in Plain English – Udemy</div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li><b>M.C.A Master Of Computer Application</b> – JNEC, Aurangabad (2021–2024)</li>
+    <li><b>B.C.A Computer of Application</b> – Hi-tech College, Aurangabad (2018–2021)</li>
+  </ul>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-container">
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button class="btn btn-primary" type="submit">Send Message</button>
+    </form>
+    <div class="contact-info">
+      <div class="social-icons">
+        <a href="mailto:anantlaghane@gmail.com"><img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email"></a>
+        <a href="tel:+919511928295"><img src="https://img.icons8.com/ios-filled/50/ffffff/phone.png" alt="Phone"></a>
+        <a href="https://github.com/anantlaghane"><img src="https://img.icons8.com/ios-filled/50/ffffff/github.png" alt="GitHub"></a>
+        <a href="https://linkedin.com/in/anantlaghane"><img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn"></a>
+      </div>
+      <div class="qr-section">
+        <h3>Scan to Save Contact</h3>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BEGIN:VCARD%0AVERSION:3.0%0AN:Anant Laghane%0AEMAIL:anantlaghane@gmail.com%0ATEL:+919511928295%0AEND:VCARD" alt="QR Code">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Anant Laghane | Built with ❤️ using HTML, CSS & JS</p>
+</footer>
+
+<script>
+  // Typing animation
+  const typing = document.getElementById("typing");
+  const roles = ["DevOps Engineer","CI/CD Enthusiast","Docker & Kubernetes Learner","Cloud Explorer"];
+  let idx=0,char=0;
+  function typeEffect(){
+    if(char<roles[idx].length){typing.textContent+=roles[idx].charAt(char);char++;setTimeout(typeEffect,100);}
+    else setTimeout(eraseEffect,1500);
+  }
+  function eraseEffect(){
+    if(char>0){typing.textContent=roles[idx].substring(0,--char);setTimeout(eraseEffect,50);}
+    else{idx=(idx+1)%roles.length;typing.textContent="";setTimeout(typeEffect,500);}
+  }
+  window.addEventListener("DOMContentLoaded",()=>{typeEffect();});
+
+  // Hamburger toggle
+  const hamburger=document.querySelector(".hamburger");
+  const navMenu=document.querySelector(".nav-menu");
+  hamburger.addEventListener("click",()=>navMenu.classList.toggle("active"));
+
+  // Fade-in animation
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target);}
+    });
+  },{threshold:0.1});
+  document.querySelectorAll("section").forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
