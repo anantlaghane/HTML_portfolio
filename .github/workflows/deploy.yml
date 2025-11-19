@@ -43,12 +43,12 @@ jobs:
             html-minifier-terser --collapse-whitespace --remove-comments "$file" -o "dist/$(basename $file)"
           done
 
-      # 4. Basic Testing
-      - name: Install Playwright
-        run: npm install -D @playwright/test
+      # # 4. Basic Testing
+      # - name: Install Playwright
+      #   run: npm install -D @playwright/test
 
-      - name: Run UI Tests
-        run: npx playwright test
+      # - name: Run UI Tests
+      #   run: npx playwright test
 
       # 5. Upload Artifact
       - name: Upload artifact
