@@ -1,9 +1,10 @@
-name: Deploy HTML to GitHub Pages
+name: Industry-Level Static Website Pipeline
 
 on:
   push:
     branches:
       - main
+  pull_request:
 
 permissions:
   contents: read
@@ -17,17 +18,49 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 1. Lint HTML
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+
+      - name: Lint HTML files
+        run: htmlhint "**/*.html"
+
+      # 2. Security Scan
+      - name: Trivy Security Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          severity: 'HIGH,CRITICAL'
+
+      # 3. Minify HTML/CSS/JS
+      - name: Install Minifiers
+        run: npm install -g html-minifier-terser clean-css-cli terser
+
+      - name: Minify HTML
+        run: |
+          mkdir dist
+          for file in $(find . -name "*.html"); do
+            html-minifier-terser --collapse-whitespace --remove-comments "$file" -o "dist/$(basename $file)"
+          done
+
+      # 4. Basic Testing
+      - name: Install Playwright
+        run: npm install -D @playwright/test
+
+      - name: Run UI Tests
+        run: npx playwright test
+
+      # 5. Upload Artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: dist/
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
